@@ -238,6 +238,9 @@ class Switch:
         # if card is a two, next player needs to draw two
         elif card.value == '2':
             self.draw2 = True
+        # if card is a Q, next player needs to draw four
+        elif card.value == 'Q':
+            self.draw4 = True
         # if card is a king, game direction reverses
         elif card.value == 'K':
             self.direction *= -1
