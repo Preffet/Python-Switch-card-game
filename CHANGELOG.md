@@ -11,6 +11,8 @@
   This version is known to contain a few logic errors.
   
 * v1.1.2 [2021-01-13]: Fixed multiple logic errors.
-  Now, games can not start with only one player. AI can be either easy or smart
-  (used to always be easy).
+  Now, games can not start with only one player.
+  AI can be either easy or smart (used to always be easy).
+  Player can play against others (used to play against itself).
+  The first player no longer has 11 cards instead of 7.
 

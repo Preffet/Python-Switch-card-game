@@ -91,10 +91,9 @@ class Switch:
             won = self.run_player(self.players[i])
             if won:
                 break
-            elif won:
+            else:
                 # advance player index depending on self.direction
                 i = (i+self.direction) % len(self.players)
-            else:
                 continue
         UI.print_winner_of_game(self.players[1])
 
@@ -117,7 +116,7 @@ class Switch:
         self.direction == 1
         self.skip = False
         self.draw2 = False
-        self.draw4 = True
+        self.draw4 = False
 
     def run_player(self, player):
         """Process a single player's turn.
