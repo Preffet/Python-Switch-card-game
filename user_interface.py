@@ -110,9 +110,8 @@ def get_player_information(max_players):
 def select_card(cards):
     """select card from hand"""
     print(f"Please select from one of the following cards: [1-{len(cards):d}]")
-    for card in range(len(cards)):
-        card = cards[i]
-        print(f"{i+1} - {card}")
+    for i, card in enumerate(cards):
+        print(f"{i + 1} - {card}")
 
     # get choice
     choice = get_int_input(1, len(cards))
