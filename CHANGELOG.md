@@ -17,4 +17,6 @@
   The first player no longer has 11 cards instead of 7.
   The chance to get a card of value 2 is the same as getting one of other values.
   (used to be higher)
-
+  
+* v1.1.3 [2021-01-13]: A bug where the game would crash when someone
+  discards a card with value J has been fixed.
