@@ -147,6 +147,7 @@ def test_can_discard__allows_ace():
     assert game.can_discard(Card('♢', 'A'))
     assert game.can_discard(Card('♡', 'A'))
     assert game.can_discard(Card('♠', 'A'))
+    assert game.can_discard(Card('♣', 'A'))
 
 
 def test_can_discard__allows_queen():
