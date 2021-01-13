@@ -29,3 +29,6 @@
   
 * v1.1.5 [2021-01-13]The bug that stopped the direction of the game from
 changing when someone discarded a card with value K has been fixed.
+Bug that caused the winner's name to always be the name of the second player has been fixed 
+This version of the game does not have any known bugs that can crash the game.
+
