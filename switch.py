@@ -113,7 +113,7 @@ class Switch:
         for player in self.players:
             self.pick_up_card(player, HAND_SIZE)
         # set game flags to initial value
-        self.direction == 1
+        self.direction = 1
         self.skip = False
         self.draw2 = False
         self.draw4 = False

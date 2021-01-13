@@ -22,7 +22,10 @@
   discards a card with value J has been fixed.
   This version is known to have some bugs regarding cards with values Q and A.
   
-* v1.1.3 [2021-01-13]:Bug fixes regarding cards with values Q and A.
+* v1.1.4 [2021-01-13]:Bug fixes regarding cards with values Q and A.
   Cards with value Q or A can now be discarded.
   The bug that prevented the next player from drawing 4 cards when the previous
   player discarded a card with value Q has been fixed.
+  
+* v1.1.5 [2021-01-13]The bug that stopped the direction of the game from
+changing when someone discarded a card with value K has been fixed.
