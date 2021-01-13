@@ -152,9 +152,9 @@ def test_can_discard__allows_ace():
 def test_can_discard__allows_queen():
     """queens can always be discarded"""
     game = mock_setup_round([], '', '♣5')
-    assert game.can_discard(Card('♢', 'K'))
-    assert game.can_discard(Card('♡', 'K'))
-    assert game.can_discard(Card('♠', 'K'))
+    assert game.can_discard(Card('♢', 'Q'))
+    assert game.can_discard(Card('♡', 'Q'))
+    assert game.can_discard(Card('♠', 'Q'))
 
 
 def test_get_normalized_hand_sizes():
