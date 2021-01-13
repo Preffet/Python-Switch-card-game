@@ -47,7 +47,7 @@ class SimpleAI:
 
         Randomly chooses one of the choices.
         """
-        return random.choice()
+        return random.choice(choices)
 
     def ask_for_swap(self, others):
         """Select a card to be discarded
