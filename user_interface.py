@@ -99,7 +99,8 @@ def get_player_information(max_players):
 
     # randomly assign a simple or smart AI for each computer strategy
     for name in ai_names[:no_of_players]:
-        if [True, False]:
+        random_bit=random.getrandbits(1)
+        if random_bit==True:
             player_info.append(('simple', name))
         else:
             player_info.append(('smart', f"Smart {name}"))
