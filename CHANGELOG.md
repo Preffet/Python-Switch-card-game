@@ -20,3 +20,7 @@
   
 * v1.1.3 [2021-01-13]: A bug where the game would crash when someone
   discards a card with value J has been fixed.
+  This version is known to have some bugs regarding cards with values Q and A.
+  
+* v1.1.3 [2021-01-13]:Bug fixes regarding cards with values Q and A.
+  Cards with value Q or A now can be discarded.
