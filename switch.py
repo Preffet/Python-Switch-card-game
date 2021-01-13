@@ -1,6 +1,6 @@
 """Main module of the switch card game"""
 import random
-from players import player_classes
+from players import Player,SimpleAI,SmartAI
 import user_interface as UI
 
 from cards import generate_deck
@@ -49,11 +49,31 @@ class Switch:
             if choice == 1:
                 # set up self.players before round starts
                 player_info = UI.get_player_information(MAX_PLAYERS)
-                self.players = [player_classes(name) for name, typ in player_info]
+                m=-1
+                for x in player_info:
+                    m=m+1
+                    n='human'
+                    s='simple'
+                    sm='smart'
+                    if n in player_info[m]:
+                        name=player_info[m][1]
+                        player=Player(name)
+                        self.players.append(player)
+
+                    if s in player_info[m]:
+                        name=player_info[m][1]
+                        player=SimpleAI(name)
+                        self.players.append(player)
+
+                    if sm in player_info[m]:
+                        player=SmartAI(SimpleAI)
+                        self.players.append(player)
+
                 self.run_round()
             else:
                 break
         UI.say_goodbye()
+
 
     def run_round(self):
         """Runs a single round of switch.

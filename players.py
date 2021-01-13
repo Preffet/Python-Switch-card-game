@@ -96,10 +96,3 @@ class SmartAI(SimpleAI):
         smallest = min(len(p.hand) for p in others)
         best = [p for p in others if len(p.hand) == smallest]
         return random.choice(best)
-
-
-player_classes = {
-    'human': Player,
-    'simple': SmartAI,
-    'smart': SimpleAI,
-}
