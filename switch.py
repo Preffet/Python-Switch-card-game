@@ -93,7 +93,7 @@ class Switch:
                 break
             else:
                 # advance player index depending on self.direction
-                i = (i+self.direction) % len(self.players)
+                i = (i +self.direction) % len(self.players)
                 continue
         UI.print_winner_of_game(self.players[1])
 
@@ -129,6 +129,7 @@ class Switch:
 
         In each turn, game effects are applied according to the outcome of the last turn. The player is then asked to select a card via a call to Player.select_card which is then discarded via a call to discard_card. If the player has no discardable card (or chooses voluntarily not to discard), draw_and_discard is called to draw from stock.
         """
+
         # apply any pending penalties (skip, draw2, draw4)
         if self.skip:
             # return without performing any discard
