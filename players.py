@@ -57,12 +57,18 @@ class SimpleAI:
         return random.choice(others)
 
 
-class SmartAI(SimpleAI):
+class SmartAI():
     """Smarter computer strategy
 
     This player makes choices based on observations of the
     current game state.
     """
+    is_ai = True
+
+    def __init__(self, name):
+        self.name = name
+        self.hand = []
+
     def select_card(self, choices, hands):
         """Select a card to be discarded
 

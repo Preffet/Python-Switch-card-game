@@ -66,7 +66,8 @@ class Switch:
                         self.players.append(player)
 
                     if sm in player_info[m]:
-                        player=SmartAI(SimpleAI)
+                        name = player_info[m][1]
+                        player=SmartAI(name)
                         self.players.append(player)
 
                 self.run_round()
@@ -261,17 +262,31 @@ class Switch:
         player's hand. If the card can be discarded, discard_card is
         called with the newly picked card.
         """
-        UI.print_message("No matching card. Drawing ...")
+        if player.is_ai:
+            print(f"{player.name} drew a card")
+
         # return if no card could be picked
         if not self.pick_up_card(player):
             return
-        # discard picked card if possible
+
+        if player.is_ai == False:
+            UI.print_message("Drawing ...")
+        value = 3
         card = player.hand[-1]
-        if self.can_discard(card):
+        if player.is_ai == False and self.can_discard(card):
+            print(f"Would you like to discard card {card}?\n1-Yes\n2-No")
+            value = UI.get_int_input(1,2)
+            if int(value)== 2:
+                print(f"{card} has been added to your hand.")
+
+        if int(value)==1 or player.is_ai or self.can_discard(card)==False:
+            # discard picked card if possible
+          if self.can_discard(card):
             self.discard_card(player, card)
-        # otherwise inform the player
-        elif not player.is_ai:
-            UI.print_discard_result(False, card)
+          # otherwise inform the player
+          elif not player.is_ai:
+             UI.print_discard_result(False, card)
+
 
     def get_normalized_hand_sizes(self, player):
         """Return list of hand sizes in normal form
