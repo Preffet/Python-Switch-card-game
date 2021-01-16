@@ -1,4 +1,4 @@
-"""command line interfacce for the switch game"""
+"""command line interface for the switch game"""
 import random
 
 
@@ -33,13 +33,13 @@ def print_discard_result(discarded, card):
     if discarded:
         print(f"Discarded: {card}\n")
     else:
-        print(f"Unable to discard card: {card}")
+        print(f"Unable to discard {card}. It has been added to your hand.")
 
 
 def print_winner_of_game(player):
     """display winner information"""
     print_message('\n'+80*'-')
-    print_message(f"Woohoo!!! Winner of the game is: {player.name}")
+    print_message(f"Woohoo !!! Winner of the game is: {player.name}")
     print_message(80*'-')
 
 
@@ -99,8 +99,8 @@ def get_player_information(max_players):
 
     # randomly assign a simple or smart AI for each computer strategy
     for name in ai_names[:no_of_players]:
-        random_bit=random.getrandbits(1)
-        if random_bit==True:
+        random_bit = random.getrandbits(1)
+        if random_bit:
             player_info.append(('simple', name))
         else:
             player_info.append(('smart', f"Smart {name}"))
@@ -110,26 +110,25 @@ def get_player_information(max_players):
 
 def select_card(cards):
     """select card from hand"""
-    print(f"Please select from one of the following cards or draw a card:")
+    print("Please select from one of the following cards or draw a card:")
     for i, card in enumerate(cards):
         print(f"{i + 1} - {card}")
     print(f"{len(cards)+1} - Draw a card")
     # get choice
-    draw=len(cards)+1
+    draw = len(cards)+1
     choice = get_int_input(1, len(cards)+1)
-    if choice == draw :
+    if choice == draw:
         return None
-    else:
-         # get card
-         return cards[choice-1]
+    # get card
+    return cards[choice-1]
 
 
 def select_player(players):
     """select other player"""
     print(f"Please select from one of the following players: [1-{len(players):d}]")
     # print out for each player in players
-    for n in range(len(players)):
-        print(f"{n + 1} - {players[n].name} = {len(players[n].hand):d}")
+    for iterator, player in enumerate(players):
+        print(f"{iterator+1} - {player.name} = {len(player.hand):d}")
 
     # get choice
     choice = get_int_input(1, len(players))

@@ -1,7 +1,6 @@
 """Test suit for the switch game"""
 from copy import deepcopy
 import switch
-
 from cards import Card
 
 

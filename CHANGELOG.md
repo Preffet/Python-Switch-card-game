@@ -15,20 +15,27 @@
   AI can be either easy or smart (used to always be easy).
   Player can play against others (used to play against itself).
   The first player no longer has 11 cards instead of 7.
-  The chance to get a card of value 2 is the same as getting one of other values.
-  (used to be higher)
+  The chance to get a card of value 2 is the same as getting one
+  of other values (used to be higher).
   
 * v1.1.3 [2021-01-13]: A bug where the game would crash when someone
   discards a card with value J has been fixed.
-  This version is known to have some bugs regarding cards with values Q and A.
+  This version has some bugs caused by cards with values Q and A.
   
-* v1.1.4 [2021-01-13]:Bug fixes regarding cards with values Q and A.
+* v1.1.4 [2021-01-13]: Bugs caused by cards with values Q and A
+  have been fixed.
   Cards with value Q or A can now be discarded.
-  The bug that prevented the next player from drawing 4 cards when the previous
-  player discarded a card with value Q has been fixed.
+  The bug that prevented the next player from drawing 4 cards when
+  the previous player discarded a card with value Q has been fixed.
   
-* v1.1.5 [2021-01-13]The bug that stopped the direction of the game from
-changing when someone discarded a card with value K has been fixed.
-Bug that caused the winner's name to always be the name of the second player has been fixed 
-This version of the game does not have any known bugs that can crash the game.
+* v1.1.5 [2021-01-13]: A bug that stopped the direction of the game
+  from changing when a card with value K was discarded has been fixed.
+  A bug that caused the winner's name to always be the name of the
+  second player has been fixed.
+
+* v1.1.5 [2021-01-14]: Bugs that caused player names to be displayed
+  incorrectly have been fixed.
+  Players can now choose to draw a card and then discard it or keep it.
+  This version of the game does not have any known bugs.
+
 

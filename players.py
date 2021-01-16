@@ -1,13 +1,14 @@
 """Players for the switch game"""
 import random
-import user_interface as UI
+import user_interface as ui
 
 
 class Player:
-    """Interface for a human player
+    """Interface for a human player.
 
-    select_card and ask_for_swap are delegated to the user_interface
+    select_card and ask_for_swap are delegated to the user_interface.
     """
+
     is_ai = False
 
     def __init__(self, name):
@@ -16,11 +17,11 @@ class Player:
 
     @staticmethod
     def select_card(choices, _):
-        """Select a card to be discarded
+        """Select a card to be discarded.
 
         Delegates choice to user interface.
         """
-        return UI.select_card(choices)
+        return ui.select_card(choices)
 
     @staticmethod
     def ask_for_swap(others):
@@ -28,7 +29,7 @@ class Player:
 
         Delegates choice to user interface.
         """
-        return UI.select_player(others)
+        return ui.select_player(others)
 
 
 class SimpleAI:
@@ -42,14 +43,16 @@ class SimpleAI:
         self.name = name
         self.hand = []
 
-    def select_card(self, choices, _):
+    @staticmethod
+    def select_card(choices, _):
         """Select a card to be discarded
 
         Randomly chooses one of the choices.
         """
         return random.choice(choices)
 
-    def ask_for_swap(self, others):
+    @staticmethod
+    def ask_for_swap(others):
         """Select a card to be discarded
 
         Randomly chooses one of the players.
@@ -57,7 +60,7 @@ class SimpleAI:
         return random.choice(others)
 
 
-class SmartAI():
+class SmartAI:
     """Smarter computer strategy
 
     This player makes choices based on observations of the
@@ -94,7 +97,8 @@ class SmartAI():
         candidate = sorted_choices[0]
         return candidate if score(candidate) > -2 else None
 
-    def ask_for_swap(self, others):
+    @staticmethod
+    def ask_for_swap(others):
         """Select a card to be discarded
 
         Switch with the player who holds the least cards.
