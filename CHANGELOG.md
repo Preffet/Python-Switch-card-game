@@ -35,7 +35,10 @@
 
 * v1.1.5 [2021-01-14]: Bugs that caused player names to be displayed
   incorrectly have been fixed.
-  Players can now choose to draw a card and then discard it or keep it.
+  Player can now choose to draw a card. If this card is discardable,
+  it is discarded immediately. Otherwise, the player has to keep it.
+  Fixed a bug which caused players from previous games appear in
+  new games.
   This version of the game does not have any known bugs.
 
 

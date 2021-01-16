@@ -43,8 +43,12 @@ class Switch:
         self.draw4 = False
         self.direction = 1
 
+    def reset(self):
+        """"Resets attributes of the class Switch."""
+        self.__init__()
+
     def run_game(self):
-        """Run rounds of the game until player decides to exist."""
+        """Run rounds of the game until player decides to exit."""
         ui.say_welcome()
         # show game menu and run rounds until player decides to exit
         while True:
@@ -52,52 +56,35 @@ class Switch:
             choice = ui.get_int_input(1, 2)
             if choice == 1:
                 # set up self.players before round starts
-                player_info = ui.get_player_information(MAX_PLAYERS)
-                iterator = -1
-                for _ in player_info:
-                    iterator = iterator+1
-                    human = 'human'
-                    simple = 'simple'
-                    smart = 'smart'
-                    if human in player_info[iterator]:
-                        name = player_info[iterator][1]
-                        player = Player(name)
-                        self.players.append(player)
-
-                    if simple in player_info[iterator]:
-                        name = player_info[iterator][1]
-                        player = SimpleAI(name)
-                        self.players.append(player)
-
-                    if smart in player_info[iterator]:
-                        name = player_info[iterator][1]
-                        player = SmartAI(name)
-                        self.players.append(player)
-
+                self.set_up_players()
                 self.run_round()
             else:
                 break
         ui.say_goodbye()
 
-    def run_round(self):
-        """Runs a single round of switch.
+    def set_up_players(self):
+        """"set up self.players"""
+        player_info = ui.get_player_information(MAX_PLAYERS)
+        iterator = -1
+        for _ in player_info:
+            iterator = iterator + 1
+            human = 'human'
+            simple = 'simple'
+            smart = 'smart'
+            if human in player_info[iterator]:
+                name = player_info[iterator][1]
+                player = Player(name)
+                self.players.append(player)
 
-        Continuously calls Switch.run_player for the current player,
-        and advances the current player depending on current direction
-        of play.
-        """
-        # deal cards etc.
-        self.setup_round()
+            if simple in player_info[iterator]:
+                name = player_info[iterator][1]
+                player = SimpleAI(name)
+                self.players.append(player)
 
-        i = 0  # current player index
-        while True:
-            # process current player's turn
-            won = self.run_player(self.players[i])
-            if won:
-                break
-            # advance player index depending on self.direction
-            i = (i + self.direction) % len(self.players)
-        ui.print_winner_of_game(self.players[i])
+            if smart in player_info[iterator]:
+                name = player_info[iterator][1]
+                player = SmartAI(name)
+                self.players.append(player)
 
     def setup_round(self):
         """Initialize a round of switch.
@@ -106,6 +93,7 @@ class Switch:
         the discard pile with its first card, deals all players their
         hands and resets game flags to their initial values.
         """
+
         # shuffle deck of cards
         self.stock = generate_deck()
         random.shuffle(self.stock)
@@ -122,6 +110,30 @@ class Switch:
         self.draw2 = False
         self.draw4 = False
 
+    def run_round(self):
+        """Runs a single round of switch.
+
+        Continuously calls Switch.run_player for the current player,
+        and advances the current player depending on current direction
+        of play.
+        """
+
+        # deal cards etc.
+        self.setup_round()
+        i = 0  # current player index
+        while True:
+            # process current player's turn
+            won = self.run_player(self.players[i])
+            if won:
+                # if someone won the game, print their name
+                ui.print_winner_of_game(self.players[i])
+                # if someone won the game, reset Switch class attributes.
+                # resetting them allows to start a new game with new players.
+                self.reset()
+                break
+            # advance player index depending on self.direction
+            i = (i + self.direction) % len(self.players)
+
     def run_player(self, player):
         """Process a single player's turn.
 
@@ -131,16 +143,15 @@ class Switch:
         Returns:
         True if no-one has won within his turn, otherwise False.
 
-        In each turn, game effects are applied according to the outcome
-        of the last turn. The player is then asked to select a card via
-        a call to Player.select_card which is then discarded via a call
-        to discard_card. If the player has no discardable card (or
-        chooses voluntarily not to discard), draw_and_discard is
+        In each turn effects are applied according to the outcome
+        of the last turn. The player is then asked to select a card
+        via a call to Player.select_card which is then discarded via
+        a call to discard_card. If the player has no discardable card
+        (or chooses voluntarily not to discard), draw_and_discard is
         called to draw from stock.
         """
 
         # apply any pending penalties (skip, draw2, draw4)
-
         if self.skip:
             # return without performing any discard
             self.skip = False
@@ -159,6 +170,7 @@ class Switch:
             self.draw4 = False
             ui.print_message('{} draws {} cards.'.format(player.name, picked))
 
+        # print information
         top_card = self.discards[-1]
         hand_sizes = len([p.hand for p in self.players])
         ui.print_player_info(player, top_card, hand_sizes)
@@ -210,6 +222,7 @@ class Switch:
         discard are shuffled back into the stock. If this is still not
         sufficient, the maximum possible number of cards is picked.
         """
+
         # repeat n times
         i = -1
         for i in range(1, amount+1):
@@ -237,6 +250,7 @@ class Switch:
         player -- Player who discards card
         card -- Card to be discarded
         """
+
         # remove card from player hand
         player.hand.remove(card)
         # and add to discard pile
@@ -278,9 +292,6 @@ class Switch:
         # return if no card could be picked
         if not self.pick_up_card(player):
             return
-        if player.is_ai:
-            print(f"{player.name} drew a card")
-
         card = player.hand[-1]
 
         if not player.is_ai:
@@ -293,6 +304,8 @@ class Switch:
                 ui.print_discard_result(False, card)
 
         if player.is_ai:
+            # print that AI drew a card
+            print(f"{player.name} drew a card")
             # discard picked card if possible
             if self.can_discard(card):
                 self.discard_card(player, card)
@@ -310,6 +323,7 @@ class Switch:
         specified player is always at position 0 and the next player
         (according to current direction of play) at position 1.
         """
+
         sizes = [len(p.hand) for p in self.players]
         idx = self.players.index(player)
         # rotate list so that given player is first
@@ -329,4 +343,5 @@ class Switch:
 
 
 if __name__ == '__main__':
+
     Switch().run_game()
