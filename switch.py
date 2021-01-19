@@ -34,7 +34,9 @@ class Switch:
     """
 
     def __init__(self):
-        """Constructor that initializes the attributes of the Switch class"""
+        """
+        Constructor that initializes the attributes of the Switch class
+        """
         self.players = []
         self.stock = []
         self.discards = []
@@ -71,16 +73,17 @@ class Switch:
             human = 'human'
             simple = 'simple'
             smart = 'smart'
+            # check if player is human
             if human in player_info[iterator]:
                 name = player_info[iterator][1]
                 player = Player(name)
                 self.players.append(player)
-
+            # check if player is simple AI
             if simple in player_info[iterator]:
                 name = player_info[iterator][1]
                 player = SimpleAI(name)
                 self.players.append(player)
-
+            # check if player is smart AI
             if smart in player_info[iterator]:
                 name = player_info[iterator][1]
                 player = SmartAI(name)
@@ -127,8 +130,8 @@ class Switch:
             if won:
                 # if someone won the game, print their name
                 ui.print_winner_of_game(self.players[i])
-                # if someone won the game, reset Switch class attributes.
-                # resetting them allows to start a new game with new players.
+                # reset Switch class attributes if someone won the game.
+                # resetting them lets a new game start with new players.
                 self.reset()
                 break
             # advance player index depending on self.direction
@@ -230,13 +233,13 @@ class Switch:
             if not self.stock:
                 # add back discarded cards (but not top card)
                 if len(self.discards) == 1:
-                    ui.print_message("All cards distributed")
+                    ui.print_message('All cards distributed')
                     return i-1
                 self.stock = self.discards[:-1]
                 del self.discards[:-1]
                 # shuffle stock
                 random.shuffle(self.stock)
-                ui.print_message("Discards are shuffled back.")
+                ui.print_message('Discards are shuffled back.')
             # draw stock card
             card = self.stock.pop()
             # and add to hand
@@ -271,7 +274,7 @@ class Switch:
         # if card is a king, game direction reverses
         elif card.value == 'K':
             self.direction *= -1
-            ui.print_message("Game direction reversed.")
+            ui.print_message('Game direction reversed.')
         # if card is a jack, ask player with whom to swap hands
         elif card.value == 'J':
             others = [p for p in self.players if p is not player]
@@ -295,7 +298,7 @@ class Switch:
         card = player.hand[-1]
 
         if not player.is_ai:
-            ui.print_message("Drawing ...")
+            ui.print_message('Drawing ...')
             # discard picked card if possible
             if self.can_discard(card):
                 self.discard_card(player, card)
@@ -305,7 +308,7 @@ class Switch:
 
         if player.is_ai:
             # print that AI drew a card
-            print(f"{player.name} drew a card")
+            print(f'{player.name} drew a card')
             # discard picked card if possible
             if self.can_discard(card):
                 self.discard_card(player, card)
@@ -339,7 +342,7 @@ class Switch:
     def swap_hands(player_1, player_2):
         """Exchanges the hands of the two given players."""
         player_1.hand, player_2.hand = player_2.hand, player_1.hand
-        ui.print_message(f"{player_1.name} swaps hands with {player_2.name}.")
+        ui.print_message(f'{player_1.name} swaps hands with {player_2.name}.')
 
 
 if __name__ == '__main__':
