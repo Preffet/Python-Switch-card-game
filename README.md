@@ -65,10 +65,7 @@ The latter assumes that you have installed pytest using
     
 -----------------------------------------------------------------------------
 
-<p align="center" markdown="2">
-## Game preview
-</p>
-<br>
+<br><h2 align="center"> Game preview </h2><br>
 
 <p align="center">
   <img width="545" alt="Screenshot 1" src="https://user-images.githubusercontent.com/84241003/161402921-cb1e5e18-98c7-4368-87a4-7b0d25055b06.png">
