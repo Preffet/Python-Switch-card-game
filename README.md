@@ -1,10 +1,18 @@
-# Switch
+![Badge tracking project size](https://img.shields.io/github/repo-size/Preffet/Python-switch-card-game?color=%2380006d)![Badge tracking code size](https://img.shields.io/github/languages/code-size/Preffet/Python-Switch-card-game?color=%235a0080)![Badge tracking last commit](https://img.shields.io/github/last-commit/Preffet/Python-switch-card-game?color=%23260080)
+
+-----------------------------------------------------------------------------
+
+![banner2](https://user-images.githubusercontent.com/84241003/161401729-d59858d4-167a-4a79-bdcd-9e50c6c5f49b.png)
+
+-----------------------------------------------------------------------------
+### Description
 
 Switch is a card game similar to the popular UNO game. The objective
 of the game is to be the first player who managed to discard all his
 or her cards. Some discards have consequences on the subsequent player
 or mode of play.
 
+-----------------------------------------------------------------------------
 ## Rules
 
 Switch is played by 2-4 players. Each player is initially dealt a hand
@@ -38,6 +46,7 @@ If there is no more card in the stock pile, all discards but the top
 card are shuffled and placed face down to form a new stock pile.
 
 
+-----------------------------------------------------------------------------
 ## Running the game
 
 Start switch on the command line with
