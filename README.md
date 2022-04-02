@@ -62,3 +62,12 @@ Run the test suite with
 The latter assumes that you have installed pytest using
 
     $ pip3 install pytest
+    
+-----------------------------------------------------------------------------
+## Game preview
+
+<img width="545" alt="Screenshot 1" src="https://user-images.githubusercontent.com/84241003/161402921-cb1e5e18-98c7-4368-87a4-7b0d25055b06.png">
+
+<img width="525" alt="Screenshot 2022-04-02 at 23 08 54" src="https://user-images.githubusercontent.com/84241003/161402955-0ec35ee7-f439-405d-bf1e-3d892e154835.png">
+
+
