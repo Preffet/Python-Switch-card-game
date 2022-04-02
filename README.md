@@ -6,6 +6,7 @@
 
 -----------------------------------------------------------------------------
 ### Description
+
 This is a text-based clone of the Switch card game.
 Switch is a card game similar to the popular UNO game. The objective
 of the game is to be the first player who managed to discard all his
@@ -14,6 +15,7 @@ or mode of play.
 
 -----------------------------------------------------------------------------
 ## Rules
+
 Switch is played by 2-4 players. Each player is initially dealt a hand
 of seven cards. The stock of remaining cards is put on the table face
 down. One card is taken from the stock and placed face up to form the
@@ -47,6 +49,7 @@ card are shuffled and placed face down to form a new stock pile.
 
 -----------------------------------------------------------------------------
 ## Running the game
+
 Start switch on the command line with
 
 	$ python3 switch.py
@@ -64,6 +67,7 @@ The latter assumes that you have installed pytest using
 -----------------------------------------------------------------------------
 
 <h2 align="center"> Game preview </h2>
+
 <p align="center">
   <img width="545" alt="Screenshot 1" src="https://user-images.githubusercontent.com/84241003/161402921-cb1e5e18-98c7-4368-87a4-7b0d25055b06.png">
 </p>
