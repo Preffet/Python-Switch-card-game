@@ -6,7 +6,7 @@
 
 -----------------------------------------------------------------------------
 ### Description
-
+This is a text-based clone of the Switch card game.
 Switch is a card game similar to the popular UNO game. The objective
 of the game is to be the first player who managed to discard all his
 or her cards. Some discards have consequences on the subsequent player
@@ -66,8 +66,9 @@ The latter assumes that you have installed pytest using
 -----------------------------------------------------------------------------
 ## Game preview
 
+<p style="text-align:center;">
 <img width="545" alt="Screenshot 1" src="https://user-images.githubusercontent.com/84241003/161402921-cb1e5e18-98c7-4368-87a4-7b0d25055b06.png">
 
 <img width="525" alt="Screenshot 2022-04-02 at 23 08 54" src="https://user-images.githubusercontent.com/84241003/161402955-0ec35ee7-f439-405d-bf1e-3d892e154835.png">
-
+</p>
 
